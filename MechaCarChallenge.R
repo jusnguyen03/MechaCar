@@ -5,3 +5,15 @@ head(MechaCar)
 lm(mpg ~ vehicle.length + vehicle.weight + spoiler.angle + ground.clearance,data=MechaCar)
 # summary of multiple linear regression
 summary(lm(mpg ~ vehicle.length + vehicle.weight + spoiler.angle + ground.clearance,data=MechaCar))
+
+# add the library
+library(tidyverse)
+# read in dataset
+Suspension <- read.csv('Suspension_Coil.csv',stringsAsFactors = F)
+head(Suspension)
+# summary statistics table
+summarize <- Suspension  %>% summarize(Mean_PSI=mean(PSI),Median_PSI=median(PSI),Variance_PSI=var(PSI), SD_PSI=sd(PSI))
+View(summarize)
+
+# suspension coil t-test
+t.test(Suspension$PSI, mu=1500)
